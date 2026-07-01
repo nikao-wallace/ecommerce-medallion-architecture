@@ -1,3 +1,7 @@
+# Bronze Layer Ingestion
+# Reads raw Olist e-commerce CSV files from Unity Catalog Volumes,
+# adds ingestion metadata, and writes each dataset as a Delta table.
+
 # Databricks notebook source
 raw_path = "/Volumes/dbw_nikao_learning/ecommerce_medallion/raw_files"
 
