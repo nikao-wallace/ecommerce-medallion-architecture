@@ -114,8 +114,8 @@ item_duplicates = (
     .filter("occurrences > 1")
 )
 
-print(f"Duplicate composite key combinations: {duplicates.count()}")
-display(duplicates)
+print(f"Duplicate composite key combinations: {item_duplicates.count()}")
+display(item_duplicates)
 
 # COMMAND ----------
 
@@ -126,8 +126,8 @@ product_duplicates = (
     .filter("occurrences > 1")
 )
 
-print(f"Duplicate product_id values: {duplicates.count()}")
-display(duplicates)
+print(f"Duplicate product_id values: {product_duplicates.count()}")
+display(product_duplicates)
 
 # COMMAND ----------
 
@@ -257,30 +257,9 @@ invalid_delivery_dates = (
 print("Orders delivered before purchase:", invalid_delivery_dates.count())
 display(invalid_delivery_dates)
 
-# COMMAND ----------
-
-from pyspark.sql.functions import col, to_date, date_trunc, datediff, when
-
-silver_orders_enriched = (
-    spark.table("silver_orders")
-    .withColumn("purchase_date", to_date(col("order_purchase_timestamp")))
-    .withColumn("purchase_month", date_trunc("month", col("order_purchase_timestamp")))
-    .withColumn(
-        "days_to_deliver",
-        datediff(col("order_delivered_customer_date"), col("order_purchase_timestamp"))
-    )
-    .withColumn(
-        "is_late_delivery",
-        when(
-            col("order_delivered_customer_date") > col("order_estimated_delivery_date"),
-            True
-        ).otherwise(False)
-    )
-)
-
-display(silver_orders_enriched.limit(10))
 
 # COMMAND ----------
+# Enrich silver_orders with date fields and delivery performance metrics
 
 from pyspark.sql.functions import col, to_date, trunc, year, date_format, datediff, when, lit
 
@@ -307,7 +286,14 @@ silver_orders_enriched = (
 
 # COMMAND ----------
 
-display(silver_orders_enriched.select(
+silver_orders_enriched.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable("silver_orders")
+
+# COMMAND ----------
+
+display(spark.table("silver_orders").select(
     "order_id",
     "order_status",
     "purchase_date",
