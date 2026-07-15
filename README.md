@@ -21,12 +21,12 @@ The project extends the original Olist Brazilian E-Commerce dataset with synthet
 ---
 ## Solution Architecture
 
-![Architecture](ECommerce_Architecture_Diagram.png)
+![Architecture](images/ECommerce_Architecture_Diagram.png)
 
 ---
 ## Databricks Pipeline
 
-![Databricks Pipeline](ECommerce_Databricks_Notebook.png)
+![Databricks Pipeline](images/ECommerce_Databricks_Notebook.png)
 
 Azure Databricks notebook demonstrating the Gold layer transformation pipeline, where validated Silver tables are aggregated into analytics-ready business models using PySpark and Delta Lake.
 
