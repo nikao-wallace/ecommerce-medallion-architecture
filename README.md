@@ -1,11 +1,27 @@
 # End-to-End E-Commerce Analytics Platform
 ### Azure Databricks • Delta Lake • Medallion Architecture • PySpark • Tableau
 
-An end-to-end Analytics Engineering project that transforms raw e-commerce transaction data into executive-ready business insights using Azure Databricks, Delta Lake, Medallion Architecture, and Tableau. The project demonstrates not only modern data engineering and semantic modeling practices, but also responsible cloud resource management through Azure budget monitoring and cost governance.
+This project demonstrates the complete lifecycle of an Analytics Engineering solution—from cloud infrastructure and ingestion through semantic modeling and executive reporting.
+
+In it, I transform raw e-commerce transaction data into executive-ready business insights using Azure Databricks, Delta Lake, Medallion Architecture, and Tableau. The project demonstrates not only modern data engineering and semantic modeling practices, but also responsible cloud resource management through Azure budget monitoring and cost governance.
 
 The project extends the original Olist Brazilian E-Commerce dataset with synthetic marketing attribution data to simulate a realistic digital marketing environment. The final deliverable is an Executive Growth & Marketing Performance Dashboard designed for business stakeholders.
 
 ---
+
+## Skills Demonstrated
+
+• Analytics Engineering
+• Azure Databricks
+• PySpark
+• Delta Lake
+• Medallion Architecture
+• Data Modeling
+• Data Validation
+• Tableau Dashboard Design
+• Executive KPI Development
+• Cloud Cost Governance
+
 ## Executive Dashboard
 
 ![Executive Dashboard](images/E_Commerce_Dashboard.png)
@@ -107,7 +123,7 @@ These controls allowed the project to remain within the planned monthly budget w
 - ELT Pipeline Design
 - Data Validation
 - Semantic Modeling
-- Antalytics Engineering
+- Analytics Engineering
 - Marketing Attribution
 - Executive Dashboard Design
 
@@ -336,7 +352,7 @@ ecommerce-medallion-architecture/
 ├── notebooks/
 │   ├── 01_ingestion_bronze.py
 │   ├── 02_bronze_to_silver.py
-│   ├── 03_growth_analytics_models.py
+│   ├── 03_synthetic_marketing_data.py
 │   └── 04_silver_to_gold.py
 │
 ├── dashboards/
